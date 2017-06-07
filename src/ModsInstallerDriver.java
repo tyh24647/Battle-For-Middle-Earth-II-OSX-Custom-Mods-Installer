@@ -11,7 +11,7 @@ public class ModsInstallerDriver {
 
     public static void main(String[] args) {
         MIModel model = new MIModel();
-        MIView view = new MIView();
+        MIView view = MIView.init();
 
         init(model, view);
     }

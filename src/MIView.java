@@ -30,11 +30,25 @@ public class MIView extends JFrame {
         setupMainFrame();
         createPanels();
         configurePanels();
+        setVisible(false);
+    }
+
+    /**
+     * Static initializer
+     * @return
+     */
+    @NotNull
+    public static MIView init() {
+        MIView view = new MIView();
+        view.setVisible(true);
+        return view;
     }
 
     private void setupMainFrame() {
         setSize(DEFAULT_WINDOW_SIZE);
+        setResizable(true);
         pack();
+        repaint();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
@@ -45,6 +59,12 @@ public class MIView extends JFrame {
         eastPanel = this.eastPanel == null ? new JPanel() : this.eastPanel;
         westPanel = this.westPanel == null ? new JPanel() : this.westPanel;
         centerPanel = this.centerPanel == null ? new JPanel(new BorderLayout()) : this.centerPanel;
+
+        add(northPanel);
+        add(southPanel);
+        add(eastPanel);
+        add(westPanel);
+        add(centerPanel);
     }
 
     private void configurePanels() {
