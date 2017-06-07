@@ -30,19 +30,6 @@ public class MIView extends JFrame {
         setupMainFrame();
         createPanels();
         configurePanels();
-        setVisible(false);  // don't start displaying anything until after initialization
-    }
-
-    /**
-     * Constructs and displays the views
-     *
-     * @return  The generated JFrame
-     */
-    @NotNull
-    public static MIView init() {
-        MIView view = new MIView();
-        view.setVisible(true);
-        return view;
     }
 
     private void setupMainFrame() {

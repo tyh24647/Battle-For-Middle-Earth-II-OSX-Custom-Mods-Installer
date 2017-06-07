@@ -9,10 +9,9 @@ import javax.swing.*;
  */
 public class ModsInstallerDriver {
 
-
     public static void main(String[] args) {
         MIModel model = new MIModel();
-        MIView view = MIView.init();
+        MIView view = new MIView();
 
         init(model, view);
     }
