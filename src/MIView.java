@@ -77,12 +77,28 @@ public class MIView extends JFrame {
                 mainPanel.getHeight() - combinedSidePanelThickness
         );
 
+        // add 'apply' button
         JPanel btnLayout = new JPanel(new BorderLayout());
+        btnLayout.setSize(centerPanel.getWidth(), centerPanel.getHeight() / 3);
         applyBtn = new JButton("Apply");
         btnLayout.add(applyBtn, BorderLayout.CENTER);
-        JPanel appSelectorPanel = new JPanel();
+
+        // add app selector
+        JPanel appSelectorPanel = new JPanel(new BorderLayout());
+        appSelectorPanel.setSize(centerPanel.getWidth(), centerPanel.getHeight() / 3);
         appPathChooser = new JFileChooser("/Applications");
+        appSelectorPanel.add(appPathChooser, BorderLayout.CENTER);
+
+        // add mod selector
+        JPanel modSelectorPanel = new JPanel(new BorderLayout());
+        modSelectorPanel.setSize(centerPanel.getWidth(), centerPanel.getHeight() / 3);
+        modFileChooser = new JFileChooser("~/Downloads");
+        modSelectorPanel.add(modFileChooser, BorderLayout.CENTER);
+
+        // add items to center panel
         centerPanel.add(btnLayout, BorderLayout.SOUTH);
+        centerPanel.add(appSelectorPanel, BorderLayout.CENTER);
+        centerPanel.add(modSelectorPanel, BorderLayout.SOUTH);
     }
 
     private void configureMainPanel() {
