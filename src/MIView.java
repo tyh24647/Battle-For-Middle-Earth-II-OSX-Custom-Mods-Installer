@@ -60,12 +60,6 @@ public class MIView extends JFrame {
         eastPanel = this.eastPanel == null ? new JPanel() : this.eastPanel;
         westPanel = this.westPanel == null ? new JPanel() : this.westPanel;
         centerPanel = this.centerPanel == null ? new JPanel(new BorderLayout()) : this.centerPanel;
-
-        add(northPanel);
-        add(southPanel);
-        add(eastPanel);
-        add(westPanel);
-        add(centerPanel);
     }
 
     private void configurePanels() {
@@ -76,6 +70,12 @@ public class MIView extends JFrame {
         configureSouthPanel();
         configureCenterPanel();
         configureMainPanel();
+        
+        add(northPanel);
+        add(southPanel);
+        add(eastPanel);
+        add(westPanel);
+        add(centerPanel);
     }
 
     private void configureCenterPanel() {
