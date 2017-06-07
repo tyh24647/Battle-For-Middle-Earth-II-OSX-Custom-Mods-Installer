@@ -46,10 +46,11 @@ public class MIView extends JFrame {
 
     private void setupMainFrame() {
         setSize(DEFAULT_WINDOW_SIZE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setPreferredSize(DEFAULT_WINDOW_SIZE);
+        getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
         setResizable(true);
         pack();
-        repaint();
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     private void createPanels() {
@@ -68,8 +69,8 @@ public class MIView extends JFrame {
     }
 
     private void configurePanels() {
-        eastPanel.setSize(DEFAULT_SIDE_PANEL_THICKNESS, mainPanel.getHeight());
-        westPanel.setSize(DEFAULT_SIDE_PANEL_THICKNESS, mainPanel.getHeight());
+        eastPanel.setPreferredSize(new Dimension(DEFAULT_SIDE_PANEL_THICKNESS, mainPanel.getHeight()));
+        westPanel.setPreferredSize(new Dimension(DEFAULT_SIDE_PANEL_THICKNESS, mainPanel.getHeight()));
 
         configureNorthPanel();
         configureSouthPanel();
@@ -79,26 +80,38 @@ public class MIView extends JFrame {
 
     private void configureCenterPanel() {
         int combinedSidePanelThickness = 2 * DEFAULT_SIDE_PANEL_THICKNESS;
-        centerPanel.setSize(
+        centerPanel.setPreferredSize(new Dimension(
                 mainPanel.getWidth() - combinedSidePanelThickness,
                 mainPanel.getHeight() - combinedSidePanelThickness
-        );
+        ));
 
         // add 'apply' button
         JPanel btnLayout = new JPanel(new BorderLayout());
-        btnLayout.setSize(centerPanel.getWidth(), centerPanel.getHeight() / 3);
+        btnLayout.setPreferredSize(new Dimension(
+                centerPanel.getWidth(),
+                centerPanel.getHeight() / 3
+        ));
+
         applyBtn = new JButton("Apply");
         btnLayout.add(applyBtn, BorderLayout.CENTER);
 
         // add app selector
         JPanel appSelectorPanel = new JPanel(new BorderLayout());
-        appSelectorPanel.setSize(centerPanel.getWidth(), centerPanel.getHeight() / 3);
+        appSelectorPanel.setPreferredSize(new Dimension(
+                centerPanel.getWidth(),
+                centerPanel.getHeight() / 3
+        ));
+
         appPathChooser = new JFileChooser("/Applications");
         appSelectorPanel.add(appPathChooser, BorderLayout.CENTER);
 
         // add mod selector
         JPanel modSelectorPanel = new JPanel(new BorderLayout());
-        modSelectorPanel.setSize(centerPanel.getWidth(), centerPanel.getHeight() / 3);
+        modSelectorPanel.setPreferredSize(new Dimension(
+                centerPanel.getWidth(),
+                centerPanel.getHeight() / 3
+        ));
+
         modFileChooser = new JFileChooser("~/Downloads");
         modSelectorPanel.add(modFileChooser, BorderLayout.CENTER);
 
@@ -125,7 +138,11 @@ public class MIView extends JFrame {
 
         northPanel.setSize(this.getWidth(), DEFAULT_SIDE_PANEL_THICKNESS);
         JLabel spacer = new JLabel();
-        spacer.setSize(northPanel.getWidth() / 3, northPanel.getHeight());
+        spacer.setPreferredSize(new Dimension(
+                northPanel.getWidth() / 3,
+                northPanel.getHeight()
+        ));
+
         northPanel.add(new JLabel());
         northPanel.add(new JLabel() {
             @Override
@@ -164,7 +181,11 @@ public class MIView extends JFrame {
             configurePanels();
         }
 
-        southPanel.setSize(mainPanel.getWidth(), DEFAULT_SIDE_PANEL_THICKNESS);
+        southPanel.setPreferredSize(new Dimension(
+                mainPanel.getWidth(),
+                DEFAULT_SIDE_PANEL_THICKNESS
+        ));
+
         JLabel createdByLbl = new JLabel("(c) tylero056, 2017. All rights reserved.");
         createdByLbl.setFont(this.getFont().deriveFont(PLAIN, 36));
         southPanel.add(createdByLbl);
